@@ -9,24 +9,41 @@ namespace ApiCrudUsingGenerics.Service
 {
     public class StudentService : IGenericService<Student>
     {
+        List<Student> _students = new List<Student>();
+
+        public StudentService()
+        {
+            for (int i = 1; i <= 10; i++)
+            {
+                _students.Add(new Student()
+                {
+                    StudentId = i,
+                    Name = "StudentName" + i,
+                    Roll = "100" + i
+                });
+            }
+        }
+
         List<Student> IGenericService<Student>.Delete(int id)
         {
-            throw new NotImplementedException();
+            _students.RemoveAll(x => x.StudentId == id);
+            return _students;
         }
 
         List<Student> IGenericService<Student>.GetAll()
         {
-            throw new NotImplementedException();
+            return _students;
         }
 
         Student IGenericService<Student>.GetById(int id)
         {
-            throw new NotImplementedException();
+            return _students.Where(x => x.StudentId == id).SingleOrDefault();
         }
 
         List<Student> IGenericService<Student>.Insert(Student item)
         {
-            throw new NotImplementedException();
+            _students.Add(item);
+            return _students;
         }
     }
 }

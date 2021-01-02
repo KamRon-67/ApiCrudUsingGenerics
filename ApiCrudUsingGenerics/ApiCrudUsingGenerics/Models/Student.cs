@@ -8,9 +8,9 @@ namespace ApiCrudUsingGenerics.Models
     public class Student
     {
         public int StudentId { get; set; }
-        public int Name { get; set; }
-        public int Roll { get; set; }
-        public int Messages { get; set; }
+        public string Name { get; set; }
+        public string Roll { get; set; }
+        public string Messages { get; set; }
 
     }
 }
